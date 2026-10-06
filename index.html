@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angolo del Mare - Pausa Lavoro per Anna Maria</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 {
+      color: #00695c;
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+    }
+    p.subtitle {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 12px;
+      border: 2px solid #b2ebf2;
+      border-radius: 8px;
+      resize: none;
+      box-sizing: border-box;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      outline: none;
+    }
+    textarea:focus {
+      border-color: #00838f;
+    }
+    button {
+      background-color: #00838f;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #006064;
+    }
+    .result {
+      margin-top: 25px;
+      padding: 20px;
+      background: #f0fdfd;
+      border-radius: 8px;
+      border-left: 5px solid #00838f;
+      text-align: left;
+      display: none;
+      white-space: pre-line;
+      color: #004d40;
+    }
+    .result img {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>🌊 Oasi Marina</h1>
+    <p class="subtitle">Pensieri di lavoro? Lasciati trasportare dal mare...</p>
+    
+    <textarea id="userInput" placeholder="Scrivi qui i tuoi pensieri sul lavoro, ufficio o impegni..."></textarea>
+    <button onclick="trasformaInMare()">Trasforma in Mare</button>
+
+    <div id="outputContainer" class="result"></div>
+  </div>
+
+  <script>
+    const contenutiMare = [
+      {
+        tipo: "poesia",
+        testo: "📜 **Poesia del Mare**\n\nSussurrano le onde sulla battigia d'orato,\nportando via il peso del giorno passato.\nUn soffio di salsedine, un orizzonte blu,\ne il rumore del traffico non si sente più."
+      },
+      {
+        tipo: "filastrocca",
+        testo: "🐚 **Filastrocca Marina**\n\nFilastrocca dell'onda blu,\nporta in alto e porta in giù.\nVia la carta, via la penna,\nil delfino ora s'impenna!\nUn respiro di fresco mare,\nora puoi solo sognare!"
+      },
+      {
+        tipo: "indovinello",
+        testo: "🐋 **Indovinello Marino**\n\nHo una casa di conchiglia e zampe da vendere,\ncamino di lato e nessuno mi può prendere.\nChi sono?\n\n*(Risposta: Il Granchio!)*"
+      },
+      {
+        tipo: "immagine",
+        testo: "🏖️ **Respiro di Mare**\n\nChiudi gli occhi e immagina questo panorama:",
+        immagine: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop"
+      }
+    ];
+
+    function trasformaInMare() {
+      const input = document.getElementById("userInput").value.trim();
+      const output = document.getElementById("outputContainer");
+
+      if (!input) {
+        alert("Scrivi qualcosa sul tuo lavoro prima di trasformarlo!");
+        return;
+      }
+
+      // Estrazione casuale di un contenuto marino
+      const scelta = contenutiMare[Math.floor(Math.random() * contenutiMare.length)];
+
+      let htmlContent = scelta.testo;
+      if (scelta.immagine) {
+        htmlContent += `<br><img src="${scelta.immagine}" alt="Mare">`;
+      }
+
+      output.innerHTML = htmlContent;
+      output.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
